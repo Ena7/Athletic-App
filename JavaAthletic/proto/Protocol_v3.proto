@@ -1,0 +1,59 @@
+syntax="proto3";
+
+option java_outer_classname="Protobuf";
+
+message User {
+  string username = 1;
+  string password = 2;
+}
+
+message Child {
+  string name = 1;
+  int32 age = 2;
+}
+
+enum Event { NONE = 0; E50M = 1; E100M = 2; E1000M = 3; E1500M = 4; }
+
+enum AgeGroup { A6_8Y = 0; A9_11Y = 1; A12_15Y = 2; }
+
+message ParticipantDetailsDTO {
+  string name = 1;
+  int32 age = 2;
+  Event event1 = 3;
+  Event event2 = 4;
+}
+
+message ChildNoEventsDTO {
+  Child child = 1;
+  int32 noEvents = 2;
+}
+
+message EventAgeGroupDTO {
+  Event event = 1;
+  AgeGroup ageGroup = 2;
+}
+
+message EventCountDTO {
+  Event event = 1;
+  AgeGroup ageGroup = 2;
+  int64 count = 3;
+}
+
+message Request {
+  enum Type { UNKNOWN = 0; LOGIN = 1; LOGOUT = 2; CHILDREN_EVENTS = 3; ADD_PARTICIPANT = 4; EVENT_COUNT = 5; }
+  Type type = 1;
+  User user = 2;
+  EventAgeGroupDTO eag = 3;
+  ParticipantDetailsDTO pd = 4;
+}
+
+message Response {
+  enum Type { UNKNOWN = 0; OK = 1; ERROR = 2; CHILDREN_EVENTS = 3; EVENT_COUNT = 4; REFRESH_EVENTS = 5; }
+
+  Type type = 1;
+  string error = 2;
+  repeated EventCountDTO ec = 3;
+  repeated ChildNoEventsDTO cne = 4;
+}
+
+// /c/gprotobuf/bin/protoc -I=. --java_out=javaFiles --csharp_out=csharpFiles Protocol_v3.proto

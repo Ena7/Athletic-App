@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<AnchorPane prefHeight="463.0" prefWidth="765.0" style="-fx-background-color: #cfffc9;" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.MainWindowController">
+   <children>
+       <Label layoutX="21.0" layoutY="14.0" prefHeight="29.0" prefWidth="174.0" text="AthleticWare" textFill="#016521">
+           <font>
+               <Font name="Microsoft Yi Baiti" size="36.0" />
+           </font>
+       </Label>
+      <Button fx:id="logoutButton" layoutX="689.0" layoutY="14.0" mnemonicParsing="false" onAction="#logoutButtonHandler" style="-fx-background-color: ff8c8a;" text="Logout">
+         <font>
+            <Font name="System Bold" size="13.0" />
+         </font>
+      </Button>
+      <Label alignment="CENTER" layoutX="522.0" layoutY="51.0" prefHeight="54.0" prefWidth="226.0" text="Number of participants grouped&#10; by event and age group" textAlignment="CENTER" />
+      <TabPane layoutX="21.0" layoutY="63.0" prefHeight="392.0" prefWidth="476.0" tabClosingPolicy="UNAVAILABLE">
+        <tabs>
+          <Tab text="Entries">
+            <content>
+              <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="363.0" prefWidth="468.0">
+                     <children>
+                        <ChoiceBox fx:id="ageGroupChoiceBox" layoutX="14.0" layoutY="101.0" prefWidth="150.0" />
+                        <ChoiceBox fx:id="eventChoiceBox" layoutX="14.0" layoutY="155.0" prefWidth="150.0" />
+                        <Label layoutX="14.0" layoutY="138.0" text="Event" />
+                        <Label layoutX="14.0" layoutY="84.0" text="Age group" />
+                        <Label layoutX="14.0" layoutY="184.0" prefHeight="53.0" prefWidth="150.0" text="*Only the 50m and 100m&#10;events are available for&#10;the 6-8 age group.&#10;">
+                           <font>
+                              <Font size="11.0" />
+                           </font>
+                        </Label>
+                        <Button fx:id="ageGroupEventFilterButton" layoutX="56.0" layoutY="256.0" mnemonicParsing="false" onAction="#ageGroupEventFilterButtonHandler" style="-fx-background-color: lightyellow;" text="Filter">
+                           <font>
+                              <Font name="System Bold" size="15.0" />
+                           </font></Button>
+                        <TableView fx:id="ageGroupEventTableView" layoutX="175.0" layoutY="14.0" prefHeight="329.0" prefWidth="287.0">
+                          <columns>
+                            <TableColumn fx:id="nameColumn" prefWidth="148.0" text="Name" />
+                            <TableColumn fx:id="ageColumn" prefWidth="62.0" text="Age" />
+                              <TableColumn fx:id="noEventsColumn" prefWidth="76.0" text="No. Events" />
+                          </columns>
+                        </TableView>
+                     </children>
+                  </AnchorPane>
+            </content>
+          </Tab>
+          <Tab text="Sign up">
+            <content>
+              <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="363.0" prefWidth="184.0">
+                     <children>
+                        <Label alignment="CENTER_RIGHT" layoutX="84.0" layoutY="87.0" text="Name">
+                           <font>
+                              <Font name="System Bold" size="15.0" />
+                           </font>
+                        </Label>
+                        <Label alignment="CENTER_RIGHT" layoutX="98.0" layoutY="123.0" text="Age">
+                           <font>
+                              <Font name="System Bold" size="15.0" />
+                           </font>
+                        </Label>
+                        <Label alignment="CENTER_RIGHT" layoutX="55.0" layoutY="183.0" prefHeight="21.0" prefWidth="73.0" text="1st event" textAlignment="RIGHT">
+                           <font>
+                              <Font name="System Bold" size="15.0" />
+                           </font>
+                        </Label>
+                        <Label alignment="CENTER_RIGHT" layoutX="49.0" layoutY="216.0" prefHeight="21.0" prefWidth="79.0" text="2nd event" textAlignment="RIGHT">
+                           <font>
+                              <Font name="System Bold" size="15.0" />
+                           </font>
+                        </Label>
+                        <Button fx:id="signUpButton" layoutX="183.0" layoutY="282.0" mnemonicParsing="false" onAction="#signUpButtonHandler" prefHeight="42.0" prefWidth="100.0" style="-fx-background-color: lightblue;" text="Sign up">
+                           <font>
+                              <Font name="System Bold" size="17.0" />
+                           </font>
+                        </Button>
+                        <TextField fx:id="nameTextField" layoutX="144.0" layoutY="85.0" prefHeight="25.0" prefWidth="229.0" />
+                        <Spinner fx:id="ageSpinner" layoutX="144.0" layoutY="121.0" prefHeight="25.0" prefWidth="89.0" />
+                        <Label layoutX="119.0" layoutY="23.0" text="Registration form">
+                           <font>
+                              <Font name="Constantia" size="30.0" />
+                           </font>
+                        </Label>
+                        <ChoiceBox fx:id="firstEventChoiceBox" layoutX="142.0" layoutY="181.0" prefHeight="25.0" prefWidth="228.0" />
+                        <ChoiceBox fx:id="secondEventChoiceBox" layoutX="142.0" layoutY="214.0" prefHeight="25.0" prefWidth="227.0" />
+                        <Label layoutX="373.0" layoutY="218.0" text="*Optional" />
+                        <Label layoutX="248.0" layoutY="118.0" prefHeight="53.0" prefWidth="158.0" text="*Only the 50m and 100m&#10;events are available for&#10;the 6-8 age group.&#10;">
+                           <font>
+                              <Font size="11.0" />
+                           </font>
+                        </Label>
+                     </children>
+                  </AnchorPane>
+            </content>
+          </Tab>
+        </tabs>
+      </TabPane>
+      <TableView fx:id="eventSignedUpTableView" layoutX="522.0" layoutY="105.0" prefHeight="329.0" prefWidth="226.0">
+        <columns>
+          <TableColumn fx:id="eventColumn" prefWidth="68.0" text="Event" />
+            <TableColumn fx:id="ageGroupColumn" prefWidth="84.0" text="Age Group" />
+          <TableColumn fx:id="signedUpColumn" text="Signed up" />
+        </columns>
+      </TableView>
+      <Label fx:id="loggedUserLabel" layoutX="534.0" layoutY="20.0" prefHeight="17.0" prefWidth="134.0" text="User: " />
+      <Label layoutX="178.0" layoutY="23.0" prefHeight="35.0" prefWidth="73.0" text="Java Edition" textFill="#016521">
+         <font>
+            <Font name="MV Boli" size="12.0" />
+         </font>
+      </Label>
+   </children>
+</AnchorPane>

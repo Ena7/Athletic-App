@@ -1,0 +1,20 @@
+plugins {
+    id 'java'
+}
+
+group 'java_sapt4'
+version '1.0'
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    testImplementation 'org.junit.jupiter:junit-jupiter-api:5.6.0'
+    testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine'
+    compile project (':')
+}
+
+test {
+    useJUnitPlatform()
+}
